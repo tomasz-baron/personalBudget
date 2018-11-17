@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: 'app-credit-cards-table',
-  templateUrl: './credit-cards-table.component.html',
-  styleUrls: ['./credit-cards-table.component.css']
+  selector: 'app-history-table',
+  templateUrl: './history-table.component.html',
+  styleUrls: ['./history-table.component.css']
 })
-export class CreditCardsTableComponent implements OnInit {
+export class HistoryTableComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
@@ -14,7 +14,7 @@ export class CreditCardsTableComponent implements OnInit {
   dataSource = new MatTableDataSource([
     {date: '10-02-2018'}
   ]);
-  
+
   constructor() { }
 
   ngOnInit() {

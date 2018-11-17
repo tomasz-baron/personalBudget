@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-accounts-table',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accounts-table.component.css']
 })
 export class AccountsTableComponent implements OnInit {
+  @ViewChild(MatSort)
+  sort: MatSort;
+
+  displayedColumns = ['name', 'number', 'bank', 'currency', 'type', 'balance'];
+  dataSource = new MatTableDataSource([
+    {name: "ttt", number: '345346'},
+    {name: "dfg", number: '546'}
+  ]);
+  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
+  
   }
 
 }

@@ -1,0 +1,14 @@
+{
+    "menu.dashboard": "Dashboard",
+    "menu.history": "History",
+    "menu.accounts": "Accounts",
+    "menu.credit.cards": "Credit cards",
+
+    "accounts.list.name": "Account name",
+    "accounts.list.number": "Account number",
+    "accounts.list.bank": "Bank name",
+    "accounts.list.currency": "Currency",
+    "accounts.list.type": "Account type",
+    "accounts.list.balance": "Available balance"
+
+}

@@ -12,4 +12,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectLang(code: string): void {
+    console.log(code);
+  }
+
 }

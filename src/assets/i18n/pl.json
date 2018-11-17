@@ -1,0 +1,13 @@
+{
+    "menu.dashboard": "Strona główna",
+    "menu.history": "Historia",
+    "menu.accounts": "Rachunki",
+    "menu.credit.cards": "Karty kredytowe",
+
+    "accounts.list.name": "Nazwa rachunku",
+    "accounts.list.number": "Numer rachunku",
+    "accounts.list.bank": "Nazwa banku",
+    "accounts.list.currency": "Waluta",
+    "accounts.list.type": "Typ rachunku",
+    "accounts.list.balance": "Dostępne środki"
+}
