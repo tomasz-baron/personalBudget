@@ -10,7 +10,7 @@ export class CreditCardsTableComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
-  displayedColumns = ['date'];
+  displayedColumns = ['number', 'funds', 'limit', 'cycle', 'repayment'];
   dataSource = new MatTableDataSource([
     {date: '10-02-2018'}
   ]);

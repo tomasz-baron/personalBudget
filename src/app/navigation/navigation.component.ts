@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navigation',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }
 
-  selectLang(code: string): void {
-    console.log(code);
+  selectLang(language: string): void {
+    this.translate.use(language);
   }
 
 }

@@ -18,5 +18,11 @@
     "history.list.to": "Na",
     "history.list.amount": "Kwota",
     "history.list.currency": "Waluta",
-    "history.list.category": "Kategoria"
+    "history.list.category": "Kategoria",
+
+    "cards.list.number": "Card number",
+    "cards.list.funds": "Available funds",
+    "cards.list.limit": "Card limit",
+    "cards.list.cycle": "Biling cycle",
+    "cards.list.repayment": "Total repayment amount"
 }

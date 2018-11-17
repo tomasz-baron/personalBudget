@@ -18,6 +18,12 @@
     "history.list.to": "To",
     "history.list.amount": "Amount",
     "history.list.currency": "Currency",
-    "history.list.category": "Category"
+    "history.list.category": "Category",
+
+    "cards.list.number": "Card number",
+    "cards.list.funds": "Available funds",
+    "cards.list.limit": "Card limit",
+    "cards.list.cycle": "Biling cycle",
+    "cards.list.repayment": "Total repayment amount"
 
 }
