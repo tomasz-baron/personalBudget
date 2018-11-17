@@ -4,7 +4,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 @Component({
   selector: 'app-credit-cards-table',
   templateUrl: './credit-cards-table.component.html',
-  styleUrls: ['./credit-cards-table.component.css']
+  styleUrls: ['./credit-cards-table.component.scss']
 })
 export class CreditCardsTableComponent implements OnInit {
   @ViewChild(MatSort)

@@ -1,19 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { 
-  MatButtonModule,
-  MatMenuModule,
-  MatTableModule,
-  MatSortModule,
-  MatInputModule,
-  MatIconModule
-} from '@angular/material';
-import { CdkTableModule } from '@angular/cdk/table';
 
-import { AppConfig } from '../config/app.config';
-import { TranslationConfigModule } from './shared/modules/translation.config.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AccountsListComponent } from './accounts-list/accounts-list.component';
@@ -21,12 +14,13 @@ import { AccountsTableComponent } from './accounts-list/accounts-table/accounts-
 import { CreditCardsListComponent } from './credit-cards-list/credit-cards-list.component';
 import { CreditCardsTableComponent } from './credit-cards-list/credit-cards-table/credit-cards-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppRoutingModule } from './app-routing.module';
 import { HistoryListComponent } from './history-list/history-list.component';
 import { HistoryTableComponent } from './history-list/history-table/history-table.component';
+import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 
-export function initResources(config: AppConfig, translate: TranslationConfigModule) {
-  return () => config.load(translate);
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({
@@ -39,11 +33,11 @@ export function initResources(config: AppConfig, translate: TranslationConfigMod
     CreditCardsTableComponent,
     DashboardComponent,
     HistoryListComponent,
-    HistoryTableComponent
+    HistoryTableComponent,
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
@@ -51,17 +45,17 @@ export function initResources(config: AppConfig, translate: TranslationConfigMod
     MatSortModule,
     MatInputModule,
     MatIconModule,
-    TranslationConfigModule,
-    CdkTableModule
+    CdkTableModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [
-    AppConfig, {
-      provide: APP_INITIALIZER,
-      useFactory: initResources,
-      deps: [ AppConfig, TranslationConfigModule ],
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

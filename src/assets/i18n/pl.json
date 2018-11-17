@@ -9,5 +9,14 @@
     "accounts.list.bank": "Nazwa banku",
     "accounts.list.currency": "Waluta",
     "accounts.list.type": "Typ rachunku",
-    "accounts.list.balance": "Dostępne środki"
+    "accounts.list.balance": "Dostępne środki",
+
+    "history.list.date": "Data",
+    "history.list.description": "Opis transakcji",
+    "history.list.type": "Typ",
+    "history.list.from": "Z",
+    "history.list.to": "Na",
+    "history.list.amount": "Kwota",
+    "history.list.currency": "Waluta",
+    "history.list.category": "Kategoria"
 }

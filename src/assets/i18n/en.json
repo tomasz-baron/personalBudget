@@ -9,6 +9,15 @@
     "accounts.list.bank": "Bank name",
     "accounts.list.currency": "Currency",
     "accounts.list.type": "Account type",
-    "accounts.list.balance": "Available balance"
+    "accounts.list.balance": "Available balance",
+
+    "history.list.date": "Date",
+    "history.list.description": "Description",
+    "history.list.type": "Type",
+    "history.list.from": "From",
+    "history.list.to": "To",
+    "history.list.amount": "Amount",
+    "history.list.currency": "Currency",
+    "history.list.category": "Category"
 
 }

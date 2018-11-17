@@ -4,7 +4,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 @Component({
   selector: 'app-accounts-table',
   templateUrl: './accounts-table.component.html',
-  styleUrls: ['./accounts-table.component.css']
+  styleUrls: ['./accounts-table.component.scss']
 })
 export class AccountsTableComponent implements OnInit {
   @ViewChild(MatSort)

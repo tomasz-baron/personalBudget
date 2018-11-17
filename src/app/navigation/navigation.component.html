@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg mat-elevation-z6" color="background">
-  <a class="navbar-brand" mat-button color="primary" href routerLink="dashboard">{{ 'menu.dashboard' | translate }}</a>
-  <a class="nav-link" mat-button color="primary" href routerLink="history">{{ 'menu.history' | translate }}</a>
-  <a class="nav-link" mat-button color="primary" href routerLink="accounts">{{ 'menu.accounts' | translate }}</a>
-  <a class="nav-link" mat-button color="primary" href routerLink="credit-cards">{{ 'menu.credit.cards' | translate }}</a>
+<nav class="navbar-header">
+  <a class="" mat-button href routerLink="dashboard">{{ 'menu.dashboard' | translate }}</a>
+  <a class="" mat-button href routerLink="history">{{ 'menu.history' | translate }}</a>
+  <a class="" mat-button href routerLink="accounts">{{ 'menu.accounts' | translate }}</a>
+  <a class="" mat-button href routerLink="credit-cards">{{ 'menu.credit.cards' | translate }}</a>
   <div class="flex-spacer"></div>
-  <button mat-button color="primary" (click)="selectLang()">EN</button>
+  <button mat-button (click)="selectLang('EN')">EN</button>
 </nav>

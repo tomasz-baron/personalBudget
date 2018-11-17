@@ -4,13 +4,13 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 @Component({
   selector: 'app-history-table',
   templateUrl: './history-table.component.html',
-  styleUrls: ['./history-table.component.css']
+  styleUrls: ['./history-table.component.scss']
 })
 export class HistoryTableComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
-  displayedColumns = ['date'];
+  displayedColumns = ['date', 'description', 'type', 'from', 'to', 'amount', 'currency', 'category'];
   dataSource = new MatTableDataSource([
     {date: '10-02-2018'}
   ]);
