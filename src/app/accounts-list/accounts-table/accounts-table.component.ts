@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { Account } from 'src/app/shared/model';
 
 @Component({
   selector: 'app-accounts-table',
@@ -7,14 +8,14 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./accounts-table.component.scss']
 })
 export class AccountsTableComponent implements OnInit {
+  @Input()
+  data: Account[];
+
   @ViewChild(MatSort)
   sort: MatSort;
 
   displayedColumns = ['name', 'number', 'bank', 'currency', 'type', 'balance'];
-  dataSource = new MatTableDataSource([
-    {name: "ttt", number: '345346'},
-    {name: "dfg", number: '546'}
-  ]);
+  dataSource;
   
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -25,8 +26,8 @@ export class AccountsTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.data); 
     this.dataSource.sort = this.sort;
-  
   }
 
 }

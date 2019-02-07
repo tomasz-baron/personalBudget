@@ -12,8 +12,8 @@
     <mat-cell *matCellDef="let element">{{element.number}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="bank">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'accounts.list.bank' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.bank}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'accounts.list.bankName' | translate }}</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.bankName}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="currency">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'accounts.list.currency' | translate }}</mat-header-cell>
@@ -25,7 +25,7 @@
   </ng-container>
   <ng-container matColumnDef="balance">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'accounts.list.balance' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.balance}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.balance | number: '.2'}}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

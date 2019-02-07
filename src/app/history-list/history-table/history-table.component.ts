@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { History } from 'src/app/shared/model';
 
 @Component({
   selector: 'app-history-table',
@@ -7,17 +8,19 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./history-table.component.scss']
 })
 export class HistoryTableComponent implements OnInit {
+  @Input()
+  data: History[];
+
   @ViewChild(MatSort)
   sort: MatSort;
 
   displayedColumns = ['date', 'description', 'type', 'from', 'to', 'amount', 'currency', 'category'];
-  dataSource = new MatTableDataSource([
-    {date: '10-02-2018'}
-  ]);
+  dataSource;
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.sort = this.sort;
   }
 

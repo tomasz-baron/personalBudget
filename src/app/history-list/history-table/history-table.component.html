@@ -1,7 +1,7 @@
 <mat-table #historyTable [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="date">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.date' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.date}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.date | date: 'mediumDate'}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="description">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.description' | translate }}</mat-header-cell>
@@ -13,15 +13,15 @@
   </ng-container>
   <ng-container matColumnDef="from">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.from' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.from}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.fromAccountId}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="to">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.to' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.to}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.toAccountId}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="amount">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.amount' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.amount}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.amount | number: '.2'}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="currency">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.currency' | translate }}</mat-header-cell>

@@ -6,7 +6,7 @@
 
     "accounts.list.name": "Account name",
     "accounts.list.number": "Account number",
-    "accounts.list.bank": "Bank name",
+    "accounts.list.bankName": "Bank name",
     "accounts.list.currency": "Currency",
     "accounts.list.type": "Account type",
     "accounts.list.balance": "Available balance",
