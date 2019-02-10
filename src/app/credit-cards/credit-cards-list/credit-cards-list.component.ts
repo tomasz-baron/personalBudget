@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from '../shared/model';
+import { Card } from 'src/app/shared/model';
+import { MatDialog } from '@angular/material';
+import { EditCreditCardComponent } from '../edit-credit-card/edit-credit-card.component';
 
 @Component({
   selector: 'app-credit-cards-list',
@@ -11,9 +13,13 @@ export class CreditCardsListComponent implements OnInit {
     {id: 'test', number: '4e35', funds: 400, limit: 200, cycle: '12', repayment: 0}
   ];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  addNewCreditCard(): void {
+    this.dialog.open(EditCreditCardComponent, {disableClose: true});
   }
 
 }

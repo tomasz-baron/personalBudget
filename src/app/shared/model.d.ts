@@ -1,12 +1,13 @@
 export interface Account {
     id: string;
     name: string;
-    number: string;
-    bankName: string;
+    number?: string;
+    bankName?: string;
     currency: string;
-    type: 'R' | 'S';
-    balance: number;
-    startedBalance: number;
+    interestRate?: number;
+    type: 'CURRENT' | 'SAVINGS' | 'CASH' | 'RETIREMENT';
+    balance?: number;
+    initialBalance: number;
 }
 
 export interface Card {
@@ -18,13 +19,22 @@ export interface Card {
     repayment: number;
 }
 
-export interface History {
+export interface Deposit {
+    id: string;
+}
+
+export interface Loan {
+    id: string;
+}
+
+export interface Transaction {
+    id: string;
     date: Date;
     description: string;
-    type: 'I' | 'O';
+    type: 'INTERNAL' | 'OUTGOING' | 'INCOMING';
     fromAccountId?: string;
     toAccountId?: string;
     amount: number;
     currency: string;
-    category: string;
+    category: 'CLOTHES' | 'FOOD' | 'ENTERTAINMENT' | 'EDUCATION' | 'SPORT' | 'DIY' | 'HEALTH' | 'IT' | 'ELECTRONICS' | 'APARTMENT' | 'CHARGES';
 }

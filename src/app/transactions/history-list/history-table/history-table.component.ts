@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { History } from 'src/app/shared/model';
+import { Transaction } from 'src/app/shared/model';
+
 
 @Component({
   selector: 'app-history-table',
@@ -9,7 +10,7 @@ import { History } from 'src/app/shared/model';
 })
 export class HistoryTableComponent implements OnInit {
   @Input()
-  data: History[];
+  data: Transaction[];
 
   @ViewChild(MatSort)
   sort: MatSort;

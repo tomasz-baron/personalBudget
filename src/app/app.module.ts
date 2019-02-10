@@ -9,15 +9,23 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AccountsListComponent } from './accounts-list/accounts-list.component';
-import { AccountsTableComponent } from './accounts-list/accounts-table/accounts-table.component';
-import { CreditCardsListComponent } from './credit-cards-list/credit-cards-list.component';
-import { CreditCardsTableComponent } from './credit-cards-list/credit-cards-table/credit-cards-table.component';
+import { AccountsListComponent } from './accounts/accounts-list/accounts-list.component';
+import { AccountsTableComponent } from './accounts/accounts-list/accounts-table/accounts-table.component';
+import { CreditCardsListComponent } from './credit-cards/credit-cards-list/credit-cards-list.component';
+import { CreditCardsTableComponent } from './credit-cards/credit-cards-list/credit-cards-table/credit-cards-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HistoryListComponent } from './history-list/history-list.component';
-import { HistoryTableComponent } from './history-list/history-table/history-table.component';
-import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule } from '@angular/material';
+import { HistoryListComponent } from './transactions/history-list/history-list.component';
+import { HistoryTableComponent } from './transactions/history-list/history-table/history-table.component';
+import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatDialogModule, MatProgressBarModule, MatChipsModule, MatSelectModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import { IbanPipe } from './shared/pipes/iban.pipe';
+import { AccountTypePipe } from './shared/pipes/account-type.pipe';
+import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
+import { TransactionCategoryPipe } from './shared/pipes/transaction-category.pipe';
+import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditTransactionsComponent } from './transactions/edit-transactions/edit-transactions.component';
+import { EditCreditCardComponent } from './credit-cards/edit-credit-card/edit-credit-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,9 +42,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardComponent,
     HistoryListComponent,
     HistoryTableComponent,
+    IbanPipe,
+    EditAccountComponent,
+    AccountTypePipe,
+    TransactionTypePipe,
+    TransactionCategoryPipe,
+    EditTransactionsComponent,
+    EditCreditCardComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -45,8 +61,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSortModule,
     MatInputModule,
     MatIconModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatSelectModule,
     CdkTableModule,
     HttpClientModule,
+    MatProgressBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,6 +76,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EditAccountComponent,
+    EditCreditCardComponent,
+    EditTransactionsComponent
+  ]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@
 <mat-table #creditCardsTable [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="number">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'cards.list.number' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.number}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.number | iban}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="funds">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'cards.list.funds' | translate }}</mat-header-cell>

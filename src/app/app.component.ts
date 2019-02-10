@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'personal-budget';
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('pl');
+    translate.setDefaultLang('en');
   }
 }
