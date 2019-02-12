@@ -1,11 +1,21 @@
 <h1 mat-dialog-title>New credit card</h1>
 <div mat-dialog-content>
-  <div>
-    <p>
-      edit-credit-card works!
-    </p>
-  </div>
+  <form [formGroup]="creditCardForm" #form="ngForm" class="credit-card-form">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Number" formControlName="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Limit" formControlName="limit">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Cycle" formControlName="cycle">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Initial funds" formControlName="initialFunds">
+    </mat-form-field>
+  </form>
 </div>
-<div mat-dialog-actions>
-  
-</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save()" [disabled]="!form.valid">Save</button>
+</mat-dialog-actions>

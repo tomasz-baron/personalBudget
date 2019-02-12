@@ -14,7 +14,7 @@ export class CreditCardsTableComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
-  displayedColumns = ['number', 'funds', 'limit', 'cycle', 'repayment'];
+  displayedColumns = ['number', 'funds', 'limit', 'cycle', 'repaymentAmount'];
   dataSource;
   
   constructor() { }

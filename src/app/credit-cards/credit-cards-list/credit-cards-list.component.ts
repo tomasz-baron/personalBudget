@@ -10,7 +10,7 @@ import { EditCreditCardComponent } from '../edit-credit-card/edit-credit-card.co
 })
 export class CreditCardsListComponent implements OnInit {
   creditCardsList: Card[] = [
-    {id: 'test', number: '4e35', funds: 400, limit: 200, cycle: '12', repayment: 0}
+    {id: 'test', number: '4e35', funds: 400, initialFunds: 1000, limit: 200, cycle: '12', repaymentAmount: 0}
   ];
 
   constructor(private dialog: MatDialog) { }

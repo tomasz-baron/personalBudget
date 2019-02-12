@@ -17,9 +17,9 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'cards.list.cycle' | translate }}</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.cycle}}</mat-cell>
   </ng-container>
-  <ng-container matColumnDef="repayment">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'cards.list.repayment' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.repayment}}</mat-cell>
+  <ng-container matColumnDef="repaymentAmount">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'cards.list.repaymentAmount' | translate }}</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.repaymentAmount}}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

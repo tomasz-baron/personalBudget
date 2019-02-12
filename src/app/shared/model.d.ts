@@ -13,10 +13,11 @@ export interface Account {
 export interface Card {
     id: string;
     number: string;
-    funds: number;
     limit: number;
     cycle: string;
-    repayment: number;
+    repaymentAmount?: number;
+    funds?: number;
+    initialFunds: number;
 }
 
 export interface Deposit {

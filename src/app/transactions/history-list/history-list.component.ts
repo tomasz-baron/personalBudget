@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from 'src/app/shared/model';
 import { MatDialog } from '@angular/material';
-import { EditTransactionsComponent } from '../edit-transactions/edit-transactions.component';
+import { NewTransactionsComponent } from '../new-transactions/new-transactions.component';
 
 @Component({
   selector: 'app-history-list',
@@ -19,7 +19,7 @@ export class HistoryListComponent implements OnInit {
   }
 
   addNewTransactions(): void {
-    this.dialog.open(EditTransactionsComponent, {disableClose: true});
+    this.dialog.open(NewTransactionsComponent, {disableClose: true});
   }
 
 }
