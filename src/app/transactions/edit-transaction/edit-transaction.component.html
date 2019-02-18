@@ -1,3 +1,37 @@
-<p>
-  edit-transaction works!
-</p>
+<h1 mat-dialog-title>Edit transactions</h1>
+<div mat-dialog-content>
+  <form [formGroup]="transactionForm" #form="ngForm" class="edit-transaction-form">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Transaction date" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Description" formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Type" formControlName="type">
+        <mat-option *ngFor="let type of transactionTypes" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Amount" formControlName="amount">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Currency" formControlName="currency">
+        <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Category" formControlName="category">
+        <mat-option *ngFor="let category of transactionCategories" [value]="category">{{category}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save()" [disabled]="!form.valid">Save</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-<app-history-table [data]="historyList"></app-history-table>
+<app-history-table [data]="historyList" (selectTransaction)="onSelectTransaction($event)"></app-history-table>
 
 <div class="btn-floating">
     <button mat-fab color="primary" (click)="addNewTransactions()">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Transaction } from 'src/app/shared/model';
 
@@ -12,6 +12,9 @@ export class HistoryTableComponent implements OnInit {
   @Input()
   data: Transaction[];
 
+  @Output()
+  selectTransaction = new EventEmitter<Transaction>();
+
   @ViewChild(MatSort)
   sort: MatSort;
 
@@ -23,6 +26,10 @@ export class HistoryTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.sort = this.sort;
+  }
+
+  onSelectTransaction() {
+    this.selectTransaction.emit(this.data[0]);
   }
 
 }
