@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { Store } from '@ngrx/store';
+import * as AppReducers from '../../store/app.reducers';
+import * as TransactionReducers from '../../store/reducers/transaction.reducers';
+import { Transaction } from 'src/app/shared/model';
+import * as TransactionActions from '../../store/actions/transaction.actions';
 
 @Component({
   selector: 'app-new-transactions',
@@ -34,7 +39,7 @@ export class NewTransactionsComponent implements OnInit {
     'CHARGES'
   ]
 
-  constructor(private dialogRef: MatDialogRef<NewTransactionsComponent>) { }
+  constructor(private dialogRef: MatDialogRef<NewTransactionsComponent>, private store: Store<AppReducers.AppState>) { }
 
   ngOnInit() {
     this.initForm();
@@ -64,7 +69,8 @@ export class NewTransactionsComponent implements OnInit {
   }
 
   public save() {
-    console.log(this.transactionForm.value);
+    this.store.dispatch(new TransactionActions.AddTransactions(this.transactionForm.value.transactions));
+    this.dialogRef.close();
   }
 
   public cancel():void {

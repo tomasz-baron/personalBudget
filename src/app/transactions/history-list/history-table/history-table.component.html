@@ -9,7 +9,7 @@
   </ng-container>
   <ng-container matColumnDef="type">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.type' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.type}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{transactionType[element.type] | translate }}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="from">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.from' | translate }}</mat-header-cell>
@@ -29,9 +29,9 @@
   </ng-container>
   <ng-container matColumnDef="category">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'history.list.category' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{transactionCategory[element.category] | translate}}</mat-cell>
   </ng-container>
   
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelectTransaction()"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelectTransaction(row)"></mat-row>
 </mat-table>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { Transaction } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory } from 'src/app/shared/model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Transaction } from 'src/app/shared/model';
 })
 export class HistoryTableComponent implements OnInit {
   @Input()
-  data: Transaction[];
+  data: Observable<Transaction[]>;
 
   @Output()
   selectTransaction = new EventEmitter<Transaction>();
@@ -20,16 +21,21 @@ export class HistoryTableComponent implements OnInit {
 
   displayedColumns = ['date', 'description', 'type', 'from', 'to', 'amount', 'currency', 'category'];
   dataSource;
+  transactionType = TransactionType;
+  transactionCategory = TransactionCategory;
 
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data);
-    this.dataSource.sort = this.sort;
+    this.data.subscribe((transactions: Transaction[]) => {
+      this.dataSource = new MatTableDataSource(transactions);
+      this.dataSource.sort = this.sort;
+    });
+
   }
 
-  onSelectTransaction() {
-    this.selectTransaction.emit(this.data[0]);
+  onSelectTransaction(transaction) {
+    this.selectTransaction.emit(transaction);
   }
 
 }

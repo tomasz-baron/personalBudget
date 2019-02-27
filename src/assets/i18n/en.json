@@ -24,6 +24,25 @@
     "cards.list.funds": "Available funds",
     "cards.list.limit": "Card limit",
     "cards.list.cycle": "Biling cycle",
-    "cards.list.repaymentAmount": "Total repayment amount"
+    "cards.list.repaymentAmount": "Total repayment amount",
+
+    "transaction.type.internal": "Internal",
+    "transaction.type.outgoing": "Outgoing",
+    "transaction.type.incoming": "Incoming",
+
+    "transaction.category.clothes": "Clothes",
+    "transaction.category.food": "Food",
+    "transaction.category.entertainment": "Entertainment",
+    "transaction.category.education": "Education",
+    "transaction.category.sport": "Sport",
+    "transaction.category.diy": "DIY",
+    "transaction.category.health": "Health",
+    "transaction.category.it": "IT",
+    "transaction.category.electronics": "Electronics",
+    "transaction.category.apartment": "Apartment",
+    "transaction.category.charges": "Charges",
+    "transaction.category.salary": "Salary",
+    "transaction.category.refund": "Refund",
+    "transaction.category.family": "Family"
 
 }

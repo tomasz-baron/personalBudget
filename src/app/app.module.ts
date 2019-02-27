@@ -27,6 +27,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditCreditCardComponent } from './credit-cards/edit-credit-card/edit-credit-card.component';
 import { NewTransactionsComponent } from './transactions/new-transactions/new-transactions.component';
 import { EditTransactionComponent } from './transactions/edit-transaction/edit-transaction.component';
+import { StoreModule } from '@ngrx/store';
+import { TransactionEffects } from './store/effects/transaction.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/app.reducers';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -77,7 +83,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([TransactionEffects]),
+    !environment.production && StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent],
