@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import * as AppReducers from '../../store/app.reducers';
 import * as TransactionReducers from '../../store/reducers/transaction.reducers';
-import { Transaction } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory } from 'src/app/shared/model';
 import * as TransactionActions from '../../store/actions/transaction.actions';
 
 @Component({
@@ -39,7 +39,10 @@ export class EditTransactionComponent implements OnInit, OnDestroy {
     'ELECTRONICS',
     'APARTMENT',
     'CHARGES'
-  ]
+  ];
+
+  public transactionType = TransactionType;
+  public transactionCategory = TransactionCategory;
 
   private subscription: Subscription;
   private id: string;
@@ -50,7 +53,7 @@ export class EditTransactionComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('transactions').subscribe((transactionState: TransactionReducers.TransactionState) => {
       this.id = transactionState.selectedTransaction.id;
       this.initForm(transactionState.selectedTransaction);
-    })
+    });
   }
 
   ngOnDestroy() {

@@ -11,6 +11,11 @@
     "accounts.list.type": "Typ rachunku",
     "accounts.list.balance": "Dostępne środki",
 
+    "account.type.current": "Rozliczeniowy",
+    "account.type.savings": "Oszczędnościowy",
+    "account.type.cash": "Gotówka",
+    "account.type.retirement": "Emerytalny",
+
     "history.list.date": "Data",
     "history.list.description": "Opis transakcji",
     "history.list.type": "Typ",

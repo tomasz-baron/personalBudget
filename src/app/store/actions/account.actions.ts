@@ -6,6 +6,8 @@ export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 export const REMOVE_ACCOUNT = 'REMOVE_ACCOUNT';
 export const DISABLE_ACCOUNT = 'DISABLE_ACCOUNT';
 export const GET_ACCOUNTS = 'GET_ACCOUNTS';
+export const SET_ACCOUNTS = 'SET_ACCOUNTS';
+export const UNSELECT_ACCOUNT = 'UNSELECT_ACCOUNT';
 export const SELECT_ACCOUNT = 'SELECT_ACCOUNT';
 
 export class AddAccount implements Action {
@@ -38,10 +40,22 @@ export class GetAccounts implements Action {
     constructor() { }
 }
 
+export class SetAccounts implements Action {
+    readonly type = SET_ACCOUNTS;
+
+    constructor(public payload: Account[]) {}
+}
+
 export class SelectAccount implements Action {
     readonly type = SELECT_ACCOUNT;
 
     constructor(public payload: Account) { }
+}
+
+export class UnselectAccount implements Action {
+    readonly type = UNSELECT_ACCOUNT;
+
+    constructor() {}
 }
 
 export type AccountActions = AddAccount |
@@ -49,4 +63,6 @@ export type AccountActions = AddAccount |
                                 RemoveAccount |
                                 DisableAccount |
                                 GetAccounts |
+                                SetAccounts |
+                                UnselectAccount |
                                 SelectAccount;

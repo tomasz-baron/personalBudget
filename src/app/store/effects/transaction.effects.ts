@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, map, tap, mergeMap, withLatestFrom } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import * as TransactionActions from '../actions/transaction.actions';
 import { TransactionsService } from 'src/app/transactions/services/transactions.service';
 import { Transaction } from 'src/app/shared/model';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducers';
 
 

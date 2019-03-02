@@ -7,7 +7,7 @@ export interface Account {
     interestRate?: number;
     type: 'CURRENT' | 'SAVINGS' | 'CASH' | 'RETIREMENT';
     included: boolean;
-    balance?: number;
+    balance: number;
     initialBalance: number;
 }
 

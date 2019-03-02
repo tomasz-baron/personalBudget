@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionsService {
-  url = 'http://localhost:3000/'
+  url = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 

@@ -20,7 +20,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-select placeholder="Account's type" formControlName="type">
-          <mat-option *ngFor="let type of accountTypes" [value]="type">{{type}}</mat-option>
+          <mat-option *ngFor="let type of accountTypes" [value]="type">{{accountType[type] | translate}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>

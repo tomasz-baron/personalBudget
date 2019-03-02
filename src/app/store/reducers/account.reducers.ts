@@ -33,10 +33,21 @@ export function accountReducer(state: AccountState = initialState, action: Accou
             return {
                 ...state,
             };
+        case AccountActions.SET_ACCOUNTS:
+            return {
+                ...state,
+                accounts: action.payload,
+            }
         case AccountActions.SELECT_ACCOUNT:
             return {
                 ...state,
+                selectedAccount: action.payload,
             };
+        case AccountActions.UNSELECT_ACCOUNT:
+            return {
+                ...state,
+                selectedAccount: null,
+            }
         default:
             return {
                 ...state

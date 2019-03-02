@@ -11,6 +11,11 @@
     "accounts.list.type": "Account type",
     "accounts.list.balance": "Available balance",
 
+    "account.type.current": "Current",
+    "account.type.savings": "Savings",
+    "account.type.cash": "Cash",
+    "account.type.retirement": "Retirement",
+
     "history.list.date": "Date",
     "history.list.description": "Description",
     "history.list.type": "Type",

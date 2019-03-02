@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { Account } from 'src/app/shared/model';
+import { Account, AccountType } from 'src/app/shared/model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-accounts-table',
@@ -9,13 +10,17 @@ import { Account } from 'src/app/shared/model';
 })
 export class AccountsTableComponent implements OnInit {
   @Input()
-  data: Account[];
+  data: Observable<Account[]>;
 
   @ViewChild(MatSort)
   sort: MatSort;
 
+  @Output()
+  selectAccount = new EventEmitter<Account>();
+
   displayedColumns = ['name', 'number', 'bank', 'currency', 'type', 'balance'];
   dataSource;
+  public accountType = AccountType;
   
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -26,8 +31,14 @@ export class AccountsTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data); 
-    this.dataSource.sort = this.sort;
+    this.data.subscribe((accounts: Account[]) => {
+      this.dataSource = new MatTableDataSource(accounts); 
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  public onSelectAccount(account: Account) {
+    this.selectAccount.emit(account);
   }
 
 }

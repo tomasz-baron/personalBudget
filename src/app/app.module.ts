@@ -33,6 +33,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/app.reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AccountEffects } from './store/effects/account.effects';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,7 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([TransactionEffects]),
+    EffectsModule.forRoot([TransactionEffects, AccountEffects]),
     !environment.production && StoreDevtoolsModule.instrument()
   ],
   providers: [],

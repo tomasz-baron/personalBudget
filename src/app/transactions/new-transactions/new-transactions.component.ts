@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as AppReducers from '../../store/app.reducers';
 import * as TransactionReducers from '../../store/reducers/transaction.reducers';
-import { Transaction } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory } from 'src/app/shared/model';
 import * as TransactionActions from '../../store/actions/transaction.actions';
 
 @Component({
@@ -37,7 +37,10 @@ export class NewTransactionsComponent implements OnInit {
     'ELECTRONICS',
     'APARTMENT',
     'CHARGES'
-  ]
+  ];
+
+  public transactionType = TransactionType;
+  public transactionCategory = TransactionCategory;
 
   constructor(private dialogRef: MatDialogRef<NewTransactionsComponent>, private store: Store<AppReducers.AppState>) { }
 

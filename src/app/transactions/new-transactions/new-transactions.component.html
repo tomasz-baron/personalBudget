@@ -13,7 +13,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Type" formControlName="type">
-            <mat-option *ngFor="let type of transactionTypes" [value]="type">{{type}}</mat-option>
+            <mat-option *ngFor="let type of transactionTypes" [value]="type">{{transactionType[type] | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -28,7 +28,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Category" formControlName="category">
-            <mat-option *ngFor="let category of transactionCategories" [value]="category">{{category}}</mat-option>
+            <mat-option *ngFor="let category of transactionCategories" [value]="category">{{transactionCategory[category] | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button mat-icon-button color="primary" (click)="removeTransaction(i)" *ngIf="getControls().length > 1">

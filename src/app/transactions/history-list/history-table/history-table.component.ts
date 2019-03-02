@@ -31,10 +31,9 @@ export class HistoryTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource(transactions);
       this.dataSource.sort = this.sort;
     });
-
   }
 
-  onSelectTransaction(transaction) {
+  public onSelectTransaction(transaction: Transaction) {
     this.selectTransaction.emit(transaction);
   }
 
