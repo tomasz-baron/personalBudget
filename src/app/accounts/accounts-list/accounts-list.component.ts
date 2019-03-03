@@ -39,4 +39,12 @@ export class AccountsListComponent implements OnInit {
     this.store.dispatch(new AccountActions.SelectAccount(account));
     this.openForm(true);
   }
+
+  public onToggleAccount({id, disabled}) {
+    if (disabled) {
+      this.store.dispatch(new AccountActions.EnableAccount(id));
+    } else {
+      this.store.dispatch(new AccountActions.DisableAccount(id));
+    }
+  }
 }

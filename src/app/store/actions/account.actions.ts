@@ -5,6 +5,7 @@ export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 export const REMOVE_ACCOUNT = 'REMOVE_ACCOUNT';
 export const DISABLE_ACCOUNT = 'DISABLE_ACCOUNT';
+export const ENABLE_ACCOUNT = 'ENABLE_ACCOUNT';
 export const GET_ACCOUNTS = 'GET_ACCOUNTS';
 export const SET_ACCOUNTS = 'SET_ACCOUNTS';
 export const UNSELECT_ACCOUNT = 'UNSELECT_ACCOUNT';
@@ -19,7 +20,7 @@ export class AddAccount implements Action {
 export class UpdateAccount implements Action {
     readonly type = UPDATE_ACCOUNT;
 
-    constructor(public payload: {id: string, account: Account}) { }
+    constructor(public payload: { id: string, account: Account }) { }
 }
 
 export class RemoveAccount implements Action {
@@ -34,6 +35,12 @@ export class DisableAccount implements Action {
     constructor(public payload: string) { }
 }
 
+export class EnableAccount implements Action {
+    readonly type = ENABLE_ACCOUNT;
+
+    constructor(public payload: string) { }
+}
+
 export class GetAccounts implements Action {
     readonly type = GET_ACCOUNTS;
 
@@ -43,7 +50,7 @@ export class GetAccounts implements Action {
 export class SetAccounts implements Action {
     readonly type = SET_ACCOUNTS;
 
-    constructor(public payload: Account[]) {}
+    constructor(public payload: Account[]) { }
 }
 
 export class SelectAccount implements Action {
@@ -55,14 +62,14 @@ export class SelectAccount implements Action {
 export class UnselectAccount implements Action {
     readonly type = UNSELECT_ACCOUNT;
 
-    constructor() {}
+    constructor() { }
 }
 
 export type AccountActions = AddAccount |
-                                UpdateAccount |
-                                RemoveAccount |
-                                DisableAccount |
-                                GetAccounts |
-                                SetAccounts |
-                                UnselectAccount |
-                                SelectAccount;
+    UpdateAccount |
+    RemoveAccount |
+    DisableAccount |
+    GetAccounts |
+    SetAccounts |
+    UnselectAccount |
+    SelectAccount;

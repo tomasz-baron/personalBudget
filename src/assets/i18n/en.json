@@ -10,6 +10,9 @@
     "accounts.list.currency": "Currency",
     "accounts.list.type": "Account's type",
     "accounts.list.balance": "Available balance",
+    "accounts.list.disable": "Disable",
+    "accounts.list.enable": "Enable",
+    "accounts.list.edit": "Edit",
     
     "accounts.edit.name": "Account's name",
     "accounts.edit.number": "Account's number",

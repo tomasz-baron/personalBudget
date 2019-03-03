@@ -13,26 +13,6 @@ const initialState: AccountState = {
 
 export function accountReducer(state: AccountState = initialState, action: AccountActions.AccountActions) {
     switch (action.type) {
-        case AccountActions.ADD_ACCOUNT:
-            return {
-                ...state,
-            };
-        case AccountActions.UPDATE_ACCOUNT:
-            return {
-                ...state,
-            };
-        case AccountActions.REMOVE_ACCOUNT:
-            return {
-                ...state,
-            };
-        case AccountActions.DISABLE_ACCOUNT:
-            return {
-                ...state,
-            };
-        case AccountActions.GET_ACCOUNTS:
-            return {
-                ...state,
-            };
         case AccountActions.SET_ACCOUNTS:
             return {
                 ...state,

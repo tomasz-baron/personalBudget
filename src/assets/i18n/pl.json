@@ -10,6 +10,9 @@
     "accounts.list.currency": "Waluta",
     "accounts.list.type": "Typ rachunku",
     "accounts.list.balance": "Dostępne środki",
+    "accounts.list.disable": "Zablokuj",
+    "accounts.list.enable": "Odblokuj",
+    "accounts.list.edit": "Edytuj",
 
     "accounts.edit.name": "Nazwa rachunku",
     "accounts.edit.number": "Numer rachunku",

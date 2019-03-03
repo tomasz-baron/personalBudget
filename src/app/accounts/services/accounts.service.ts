@@ -19,6 +19,14 @@ export class AccountsService {
   public updateAccount(id: string, updatedAccount: Account) {
     return this.http.patch<Account>(`${this.url}accounts/${id}`, updatedAccount);
   }
+
+  public enableAccount(id: string) {
+    return this.http.post<Account>(`${this.url}accounts/${id}/enable`, 'true');
+  }
+
+  public disableAccount(id: string) {
+    return this.http.post<Account>(`${this.url}accounts/${id}/disable`, 'true');
+  }
   
   public getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(`${this.url}accounts`);

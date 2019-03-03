@@ -8,7 +8,7 @@ import { Account } from 'src/app/shared/model';
 @Injectable()
 export class AccountEffects {
 
-    constructor(private actions$: Actions, private accountsService: AccountsService) {}
+    constructor(private actions$: Actions, private accountsService: AccountsService) { }
 
     @Effect()
     getAccounts = this.actions$
@@ -19,13 +19,13 @@ export class AccountEffects {
             }),
             map((accounts: Account[]) => new AccountActions.SetAccounts(accounts))
         );
-        
+
     @Effect()
     updateAccount = this.actions$
         .pipe(
             ofType(AccountActions.UPDATE_ACCOUNT),
             map((action: AccountActions.UpdateAccount) => action.payload),
-            switchMap((data: {id: string, account: Account}) => {
+            switchMap((data: { id: string, account: Account }) => {
                 return this.accountsService.updateAccount(data.id, data.account);
             }),
             map(() => {
@@ -45,4 +45,32 @@ export class AccountEffects {
                 return new AccountActions.GetAccounts();
             })
         );
+
+    @Effect()
+    enableAccount = this.actions$
+        .pipe(
+            ofType(AccountActions.ENABLE_ACCOUNT),
+            map((action: AccountActions.EnableAccount) => action.payload),
+            switchMap((id: string) => {
+                console.log(id);
+                return this.accountsService.enableAccount(id);
+            }),
+            map(() => {
+                return new AccountActions.GetAccounts();
+            })
+        )
+
+    @Effect()
+    disableAccount = this.actions$
+        .pipe(
+            ofType(AccountActions.DISABLE_ACCOUNT),
+            map((action: AccountActions.EnableAccount) => action.payload),
+            switchMap((id: string) => {
+                console.log(id);
+                return this.accountsService.disableAccount(id);
+            }),
+            map(() => {
+                return new AccountActions.GetAccounts();
+            })
+        )
 }

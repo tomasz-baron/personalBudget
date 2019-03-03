@@ -43,7 +43,8 @@
       "included": true,
       "balance": 200.01,
       "initialBalance": 1,
-      "interestRate": 0
+      "interestRate": 0,
+      "disabled": true
     },
     {
       "id": "3",
@@ -55,7 +56,8 @@
       "included": true,
       "balance": 4059.01,
       "initialBalance": 0,
-      "interestRate": 0
+      "interestRate": 0,
+      "disabled": false
     },
     {
       "name": "dfgfgh",
@@ -66,7 +68,8 @@
       "type": "SAVINGS",
       "initialBalance": 1,
       "included": false,
-      "id": "AeX_rkV"
+      "id": "AeX_rkV",
+      "disabled": false
     }
   ]
 }
