@@ -53,10 +53,11 @@ export class EditAccountComponent implements OnInit, OnDestroy {
 
   public save() {
     if (this.data.editMode) {
-      console.log(this.accountForm.value);
+      this.store.dispatch(new AccountActions.UpdateAccount({id: this.id, account: this.accountForm.value}))
     } else {
       this.store.dispatch(new AccountActions.AddAccount(this.accountForm.value));
     }
+    this.dialogRef.close();
   }
 
   public cancel(): void {

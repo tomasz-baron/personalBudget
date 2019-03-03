@@ -19,6 +19,19 @@ export class AccountEffects {
             }),
             map((accounts: Account[]) => new AccountActions.SetAccounts(accounts))
         );
+        
+    @Effect()
+    updateAccount = this.actions$
+        .pipe(
+            ofType(AccountActions.UPDATE_ACCOUNT),
+            map((action: AccountActions.UpdateAccount) => action.payload),
+            switchMap((data: {id: string, account: Account}) => {
+                return this.accountsService.updateAccount(data.id, data.account);
+            }),
+            map(() => {
+                return new AccountActions.GetAccounts();
+            })
+        )
 
     @Effect()
     addAccount = this.actions$

@@ -37,23 +37,25 @@
       "id": "1",
       "name": "test",
       "number": "25487349072347238",
-      "bankName": "TT",
+      "bankName": "TTEs",
       "currency": "PLN",
       "type": "CURRENT",
       "included": true,
       "balance": 200.01,
-      "initialBalance": 1
+      "initialBalance": 1,
+      "interestRate": 0
     },
     {
       "id": "3",
       "name": "nowqy",
       "number": "44487349072347238",
-      "bankName": "TT",
+      "bankName": "TTsdf",
       "currency": "EUR",
       "type": "CURRENT",
       "included": true,
       "balance": 4059.01,
-      "initialBalance": 0
+      "initialBalance": 0,
+      "interestRate": 0
     },
     {
       "name": "dfgfgh",

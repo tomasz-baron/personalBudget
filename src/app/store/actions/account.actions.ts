@@ -19,7 +19,7 @@ export class AddAccount implements Action {
 export class UpdateAccount implements Action {
     readonly type = UPDATE_ACCOUNT;
 
-    constructor(public payload: Account) { }
+    constructor(public payload: {id: string, account: Account}) { }
 }
 
 export class RemoveAccount implements Action {

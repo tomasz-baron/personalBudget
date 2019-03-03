@@ -15,6 +15,10 @@ export class AccountsService {
   public addAccount(newAccount: Account): Observable<Account> {
     return this.http.post<Account>(`${this.url}accounts`, newAccount);
   }
+
+  public updateAccount(id: string, updatedAccount: Account) {
+    return this.http.patch<Account>(`${this.url}accounts/${id}`, updatedAccount);
+  }
   
   public getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(`${this.url}accounts`);
