@@ -11,7 +11,7 @@ const routes: Routes = [
       component: DashboardComponent
   },
   {
-      path: 'history',
+      path: 'transactions',
       component: HistoryListComponent
   },
   {

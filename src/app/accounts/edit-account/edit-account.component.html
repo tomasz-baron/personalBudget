@@ -2,33 +2,34 @@
 <div mat-dialog-content>
   <form [formGroup]="accountForm" class="account-form" #form="ngForm">
       <mat-form-field>
-        <input matInput type="text" placeholder="Account's name" formControlName="name">
+        <input matInput type="text" [placeholder]="'accounts.edit.name' | translate" formControlName="name">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" placeholder="Account's number" formControlName="number">
+        <input matInput type="text" [placeholder]="'accounts.edit.number' | translate" formControlName="number">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" placeholder="Bank's name" formControlName="bankName">
+        <input matInput type="text" [placeholder]="'accounts.edit.bankName' | translate" formControlName="bankName">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Currency" formControlName="currency">
+        <mat-select [placeholder]="'accounts.edit.currency' | translate" formControlName="currency">
           <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="number" placeholder="Interest rate" formControlName="interestRate">
+        <input matInput type="number" [placeholder]="'accounts.edit.interestRate' | translate" formControlName="interestRate">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Account's type" formControlName="type">
+        <mat-select [placeholder]="'accounts.edit.type' | translate" formControlName="type">
           <mat-option *ngFor="let type of accountTypes" [value]="type">{{accountType[type] | translate}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-          <input matInput type="number" placeholder="Initial balance" formControlName="initialBalance">
+        <input matInput type="number" [placeholder]="'accounts.edit.initialBalance' | translate" formControlName="initialBalance">
       </mat-form-field>
+      <mat-slide-toggle formControlName="included" color="primary">{{'accounts.edit.include' | translate}}</mat-slide-toggle>
   </form>
 </div>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button (click)="save()" [disabled]="!form.valid">Save</button>
+  <button mat-button (click)="cancel()">{{'accounts.edit.cancel' | translate}}</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="!form.valid">{{'accounts.edit.save' | translate}}</button>
 </mat-dialog-actions>

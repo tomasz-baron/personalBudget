@@ -52,7 +52,11 @@ export class EditAccountComponent implements OnInit, OnDestroy {
   }
 
   public save() {
-    console.log(this.accountForm.value);
+    if (this.data.editMode) {
+      console.log(this.accountForm.value);
+    } else {
+      this.store.dispatch(new AccountActions.AddAccount(this.accountForm.value));
+    }
   }
 
   public cancel(): void {
@@ -64,12 +68,12 @@ export class EditAccountComponent implements OnInit, OnDestroy {
       name: new FormControl(account.name, [Validators.required]),
       number: new FormControl(account.number || ''),
       bankName: new FormControl(account.bankName || ''),
-      currency: new FormControl(account.currency || 'PLN', [Validators.required]),
+      currency: new FormControl(account.currency || '', [Validators.required]),
       interestRate: new FormControl(account.interestRate || 0),
       type: new FormControl(account.type, [Validators.required]),
-      initialBalance: new FormControl(account.initialBalance, [Validators.required])
-    })
-
+      initialBalance: new FormControl(account.initialBalance, [Validators.required]),
+      included: new FormControl(account.included || false)
+    });
   }
 
 }

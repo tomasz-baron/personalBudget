@@ -16,7 +16,7 @@ import { CreditCardsTableComponent } from './credit-cards/credit-cards-list/cred
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HistoryListComponent } from './transactions/history-list/history-list.component';
 import { HistoryTableComponent } from './transactions/history-list/history-table/history-table.component';
-import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatDialogModule, MatProgressBarModule, MatChipsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatDialogModule, MatProgressBarModule, MatChipsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSlideToggleModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { IbanPipe } from './shared/pipes/iban.pipe';
 import { AccountTypePipe } from './shared/pipes/account-type.pipe';
@@ -75,6 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
     CdkTableModule,
     HttpClientModule,
     MatProgressBarModule,

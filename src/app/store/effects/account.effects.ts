@@ -19,4 +19,17 @@ export class AccountEffects {
             }),
             map((accounts: Account[]) => new AccountActions.SetAccounts(accounts))
         );
+
+    @Effect()
+    addAccount = this.actions$
+        .pipe(
+            ofType(AccountActions.ADD_ACCOUNT),
+            map((action: AccountActions.AddAccount) => action.payload),
+            switchMap((account: Account) => {
+                return this.accountsService.addAccount(account);
+            }),
+            map(() => {
+                return new AccountActions.GetAccounts();
+            })
+        );
 }

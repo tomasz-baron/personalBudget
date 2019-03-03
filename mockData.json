@@ -37,9 +37,9 @@
       "id": "1",
       "name": "test",
       "number": "25487349072347238",
-      "bankName": "TT", 
+      "bankName": "TT",
       "currency": "PLN",
-      "type": "CURRENT", 
+      "type": "CURRENT",
       "included": true,
       "balance": 200.01,
       "initialBalance": 1
@@ -48,12 +48,23 @@
       "id": "3",
       "name": "nowqy",
       "number": "44487349072347238",
-      "bankName": "TT", 
+      "bankName": "TT",
       "currency": "EUR",
-      "type": "CURRENT", 
+      "type": "CURRENT",
       "included": true,
       "balance": 4059.01,
       "initialBalance": 0
+    },
+    {
+      "name": "dfgfgh",
+      "number": "56475678564536",
+      "bankName": "gfhfj",
+      "currency": "PLN",
+      "interestRate": 3,
+      "type": "SAVINGS",
+      "initialBalance": 1,
+      "included": false,
+      "id": "AeX_rkV"
     }
   ]
 }
