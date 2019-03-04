@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import { Observable } from 'rxjs';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Account, AccountType } from 'src/app/shared/model';
+import { NgForm } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-accounts-table',
@@ -11,8 +13,8 @@ import { Account, AccountType } from 'src/app/shared/model';
   styleUrls: ['./accounts-table.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
@@ -21,8 +23,14 @@ export class AccountsTableComponent implements OnInit {
   @Input()
   data: Observable<Account[]>;
 
+  @Input()
+  filters: BehaviorSubject<any>;
+
   @ViewChild(MatSort)
   sort: MatSort;
+
+  @ViewChild('searchForm')
+  searchForm: NgForm;
 
   @Output()
   selectAccount = new EventEmitter<Account>();
@@ -30,11 +38,19 @@ export class AccountsTableComponent implements OnInit {
   @Output()
   toggleAccount = new EventEmitter<Account>();
 
-  displayedColumns = ['name', 'number', 'bank', 'currency', 'type', 'balance'];
+  displayedColumns = ['name', 'number', 'bankName', 'type', 'balance'];
   dataSource;
   expandedElement: Account | null;
   public accountType = AccountType;
-  
+  public textFilter: string = '';
+
+  public accountTypes: string[] = [
+    'CURRENT',
+    'SAVINGS',
+    'CASH',
+    'RETIREMENT'
+  ];
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
@@ -45,9 +61,18 @@ export class AccountsTableComponent implements OnInit {
 
   ngOnInit() {
     this.data.subscribe((accounts: Account[]) => {
-      this.dataSource = new MatTableDataSource(accounts); 
+      this.dataSource = new MatTableDataSource(accounts);
+      this.textFilter = '';
       this.dataSource.sort = this.sort;
     });
+
+    this.searchForm.valueChanges
+      .pipe(
+        debounceTime(100),
+      )
+      .subscribe(value => {
+        this.filters.next(value.type);
+      });
   }
 
   public onSelectAccount(account: Account) {

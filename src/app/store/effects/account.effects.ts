@@ -14,8 +14,9 @@ export class AccountEffects {
     getAccounts = this.actions$
         .pipe(
             ofType(AccountActions.GET_ACCOUNTS),
-            switchMap(() => {
-                return this.accountsService.getAccounts();
+            map((action: AccountActions.GetAccounts) => action.payload),
+            switchMap((type: string) => {
+                return this.accountsService.getAccounts(type);
             }),
             map((accounts: Account[]) => new AccountActions.SetAccounts(accounts))
         );
@@ -27,9 +28,6 @@ export class AccountEffects {
             map((action: AccountActions.UpdateAccount) => action.payload),
             switchMap((data: { id: string, account: Account }) => {
                 return this.accountsService.updateAccount(data.id, data.account);
-            }),
-            map(() => {
-                return new AccountActions.GetAccounts();
             })
         )
 
@@ -40,9 +38,6 @@ export class AccountEffects {
             map((action: AccountActions.AddAccount) => action.payload),
             switchMap((account: Account) => {
                 return this.accountsService.addAccount(account);
-            }),
-            map(() => {
-                return new AccountActions.GetAccounts();
             })
         );
 
@@ -56,7 +51,7 @@ export class AccountEffects {
                 return this.accountsService.enableAccount(id);
             }),
             map(() => {
-                return new AccountActions.GetAccounts();
+                return new AccountActions.GetAccounts('');
             })
         )
 
@@ -70,7 +65,7 @@ export class AccountEffects {
                 return this.accountsService.disableAccount(id);
             }),
             map(() => {
-                return new AccountActions.GetAccounts();
+                return new AccountActions.GetAccounts('');
             })
         )
 }

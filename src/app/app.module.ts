@@ -16,14 +16,14 @@ import { CreditCardsTableComponent } from './credit-cards/credit-cards-list/cred
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HistoryListComponent } from './transactions/history-list/history-list.component';
 import { HistoryTableComponent } from './transactions/history-list/history-table/history-table.component';
-import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatDialogModule, MatProgressBarModule, MatChipsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSlideToggleModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatDialogModule, MatProgressBarModule, MatChipsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSlideToggleModule, MatCardModule, MatDividerModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { IbanPipe } from './shared/pipes/iban.pipe';
 import { AccountTypePipe } from './shared/pipes/account-type.pipe';
 import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
 import { TransactionCategoryPipe } from './shared/pipes/transaction-category.pipe';
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EditCreditCardComponent } from './credit-cards/edit-credit-card/edit-credit-card.component';
 import { NewTransactionsComponent } from './transactions/new-transactions/new-transactions.component';
 import { EditTransactionComponent } from './transactions/edit-transaction/edit-transaction.component';
@@ -62,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -77,6 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDatepickerModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatCardModule,
+    MatDividerModule,
     CdkTableModule,
     HttpClientModule,
     MatProgressBarModule,

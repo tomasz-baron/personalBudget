@@ -44,7 +44,7 @@ export class EnableAccount implements Action {
 export class GetAccounts implements Action {
     readonly type = GET_ACCOUNTS;
 
-    constructor() { }
+    constructor(public payload: string) { }
 }
 
 export class SetAccounts implements Action {

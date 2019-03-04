@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Account } from 'src/app/shared/model';
@@ -28,7 +28,11 @@ export class AccountsService {
     return this.http.post<Account>(`${this.url}accounts/${id}/disable`, 'true');
   }
   
-  public getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(`${this.url}accounts`);
+  public getAccounts(type: string): Observable<Account[]> {
+    let params = new HttpParams();
+    if (type) {
+      params = new HttpParams().set('type', type);
+    }
+    return this.http.get<Account[]>(`${this.url}accounts`, {params});
   }
 }

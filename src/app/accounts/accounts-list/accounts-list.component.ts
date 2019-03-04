@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { EditAccountComponent } from '../edit-account/edit-account.component';
 import { Account } from 'src/app/shared/model';
 import * as AppReducers from '../../store/app.reducers';
-import { map } from 'rxjs/operators';
+import { map, distinct } from 'rxjs/operators';
 import * as AccountReducers from '../../store/reducers/account.reducers';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import * as AccountActions from '../../store/actions/account.actions';
 
 
@@ -15,16 +15,29 @@ import * as AccountActions from '../../store/actions/account.actions';
   templateUrl: './accounts-list.component.html',
   styleUrls: ['./accounts-list.component.scss']
 })
-export class AccountsListComponent implements OnInit {
+export class AccountsListComponent implements OnInit, OnDestroy {
   accountsList$: Observable<Account[]>;
+  searchSubscription: Subscription;
+
+  filters$: BehaviorSubject<any> = new BehaviorSubject({
+    type: ''
+  });
 
   constructor(private dialog: MatDialog, private store: Store<AppReducers.AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new AccountActions.GetAccounts());
+    this.searchSubscription = this.filters$.subscribe((type) => {
+      this.store.dispatch(new AccountActions.GetAccounts(type));
+    });
+    
     this.accountsList$ = this.store.select('accounts').pipe(
-      map((data: AccountReducers.AccountState) => data.accounts)
+      map((data: AccountReducers.AccountState) => data.accounts),
+      distinct()
     )
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
   }
 
   public openForm(editMode?: boolean): void {
@@ -32,6 +45,7 @@ export class AccountsListComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe(() => {
       this.store.dispatch(new AccountActions.UnselectAccount());
+      this.filters$.next('');
     });
   }
 
