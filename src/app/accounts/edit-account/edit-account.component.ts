@@ -41,7 +41,7 @@ export class EditAccountComponent implements OnInit, OnDestroy {
         this.initForm(accountState.selectedAccount);
       });
     } else {
-      this.initForm({id: '', name: '', number: '', bankName: '', currency: 'PLN', interestRate: 0, type: 'CURRENT', included: true, balance: 0, initialBalance: 0});
+      this.initForm({ id: '', name: '', number: '', bankName: '', currency: 'PLN', interestRate: undefined, type: 'CURRENT', included: true, balance: undefined, initialBalance: undefined });
     }
   }
 
@@ -53,7 +53,7 @@ export class EditAccountComponent implements OnInit, OnDestroy {
 
   public save() {
     if (this.data.editMode) {
-      this.store.dispatch(new AccountActions.UpdateAccount({id: this.id, account: this.accountForm.value}))
+      this.store.dispatch(new AccountActions.UpdateAccount({ id: this.id, account: this.accountForm.value }))
     } else {
       this.store.dispatch(new AccountActions.AddAccount(this.accountForm.value));
     }
@@ -64,17 +64,26 @@ export class EditAccountComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
+  public onSelectType() {
+    if (this.accountForm.value.type === 'SAVINGS' || this.accountForm.value.type === 'RETIREMENT') {
+      this.accountForm.get('interestRate').enable();
+    } else {
+      this.accountForm.get('interestRate').disable();
+    }
+  }
+
   private initForm(account: Account) {
     this.accountForm = new FormGroup({
       name: new FormControl(account.name, [Validators.required]),
       number: new FormControl(account.number || ''),
       bankName: new FormControl(account.bankName || ''),
       currency: new FormControl(account.currency || '', [Validators.required]),
-      interestRate: new FormControl(account.interestRate || 0),
+      interestRate: new FormControl(account.interestRate),
       type: new FormControl(account.type, [Validators.required]),
       initialBalance: new FormControl(account.initialBalance, [Validators.required]),
       included: new FormControl(account.included || false)
     });
+    this.onSelectType();
   }
 
 }

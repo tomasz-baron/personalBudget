@@ -38,7 +38,7 @@ export class AccountsTableComponent implements OnInit {
   @Output()
   toggleAccount = new EventEmitter<Account>();
 
-  displayedColumns = ['name', 'number', 'bankName', 'type', 'balance'];
+  columnsToDisplay = ['name', 'number', 'bankName', 'type', 'balance'];
   dataSource;
   expandedElement: Account | null;
   public accountType = AccountType;

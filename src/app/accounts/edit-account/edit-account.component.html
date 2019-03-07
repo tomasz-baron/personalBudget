@@ -16,12 +16,12 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="number" [placeholder]="'accounts.edit.interestRate' | translate" formControlName="interestRate">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select [placeholder]="'accounts.edit.type' | translate" formControlName="type">
+        <mat-select [placeholder]="'accounts.edit.type' | translate" formControlName="type" (selectionChange)="onSelectType()">
           <mat-option *ngFor="let type of accountTypes" [value]="type">{{accountType[type] | translate}}</mat-option>
         </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" [placeholder]="'accounts.edit.interestRate' | translate" formControlName="interestRate">
       </mat-form-field>
       <mat-form-field>
         <input matInput type="number" [placeholder]="'accounts.edit.initialBalance' | translate" formControlName="initialBalance">

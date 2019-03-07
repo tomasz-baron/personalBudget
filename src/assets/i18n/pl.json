@@ -13,6 +13,7 @@
     "accounts.list.disable": "Zablokuj",
     "accounts.list.enable": "Odblokuj",
     "accounts.list.edit": "Edytuj",
+    "accounts.list.totalBalance": "Razem",
 
     "accounts.edit.name": "Nazwa rachunku",
     "accounts.edit.number": "Numer rachunku",
