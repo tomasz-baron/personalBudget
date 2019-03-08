@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Account, AccountType } from 'src/app/shared/model';
 import { NgForm } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { AccountsService } from '../../services/accounts.service';
 
 @Component({
   selector: 'app-accounts-table',
@@ -43,6 +44,7 @@ export class AccountsTableComponent implements OnInit {
   expandedElement: Account | null;
   public accountType = AccountType;
   public textFilter: string = '';
+  public summary: number;
 
   public accountTypes: string[] = [
     'CURRENT',
@@ -57,13 +59,16 @@ export class AccountsTableComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  constructor() { }
+  constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
     this.data.subscribe((accounts: Account[]) => {
       this.dataSource = new MatTableDataSource(accounts);
       this.textFilter = '';
       this.dataSource.sort = this.sort;
+      this.dataSource.connect().subscribe((data) =>{
+        this.summary = this.accountsService.calculateSummary(data);
+      })
     });
 
     this.searchForm.valueChanges

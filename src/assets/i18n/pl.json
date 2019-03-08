@@ -14,6 +14,7 @@
     "accounts.list.enable": "Odblokuj",
     "accounts.list.edit": "Edytuj",
     "accounts.list.totalBalance": "Razem",
+    "accounts.list.allTypes": "Wszystkie",
 
     "accounts.edit.name": "Nazwa rachunku",
     "accounts.edit.number": "Numer rachunku",

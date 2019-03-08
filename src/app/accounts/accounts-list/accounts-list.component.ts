@@ -6,7 +6,7 @@ import { Account } from 'src/app/shared/model';
 import * as AppReducers from '../../store/app.reducers';
 import { map, distinct } from 'rxjs/operators';
 import * as AccountReducers from '../../store/reducers/account.reducers';
-import { Observable, BehaviorSubject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import * as AccountActions from '../../store/actions/account.actions';
 
 
@@ -19,9 +19,7 @@ export class AccountsListComponent implements OnInit, OnDestroy {
   accountsList$: Observable<Account[]>;
   searchSubscription: Subscription;
 
-  filters$: BehaviorSubject<any> = new BehaviorSubject({
-    type: ''
-  });
+  filters$: Subject<any> = new Subject();
 
   constructor(private dialog: MatDialog, private store: Store<AppReducers.AppState>) { }
 

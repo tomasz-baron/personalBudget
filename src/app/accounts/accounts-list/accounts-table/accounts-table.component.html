@@ -5,6 +5,7 @@
   <form #searchForm="ngForm" class="search-form">
     <mat-form-field>
       <mat-select [placeholder]="'accounts.edit.type' | translate" ngModel name="type">
+          <mat-option [value]="''">{{'accounts.list.allTypes' | translate}}</mat-option>
         <mat-option *ngFor="let type of accountTypes" [value]="type">{{accountType[type] | translate}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -36,7 +37,7 @@
     <ng-container matColumnDef="balance">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'accounts.list.balance' | translate }}</th>
       <td mat-cell *matCellDef="let element">{{element.balance | number: '.2'}} {{element.currency}}</td>
-      <td mat-footer-cell *matFooterCellDef><span class="total-balance">100,00</span></td>
+      <td mat-footer-cell *matFooterCellDef><span class="total-balance">{{summary | number: '.2'}}</span></td>
     </ng-container>
 
     <ng-container matColumnDef="expandedDetail">

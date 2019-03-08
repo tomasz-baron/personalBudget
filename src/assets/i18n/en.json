@@ -14,6 +14,7 @@
     "accounts.list.enable": "Enable",
     "accounts.list.edit": "Edit",
     "accounts.list.totalBalance": "Total",
+    "accounts.list.allTypes": "All",
     
     "accounts.edit.name": "Account's name",
     "accounts.edit.number": "Account's number",

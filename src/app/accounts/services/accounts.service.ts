@@ -35,4 +35,16 @@ export class AccountsService {
     }
     return this.http.get<Account[]>(`${this.url}accounts`, {params});
   }
+
+  public calculateSummary(accounts: Account[]): number {
+    const filteredAccounts: Account[] = accounts
+      .filter((account: Account) => account.included);
+    if (filteredAccounts.length) {
+      const summary: number = filteredAccounts
+        .map((account: Account) => account.balance)
+        .reduce((prev: number, curr: number) => prev + curr);
+      return summary;
+    }
+    return 0;
+  }
 }
