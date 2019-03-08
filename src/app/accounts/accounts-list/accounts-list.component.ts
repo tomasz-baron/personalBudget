@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { EditAccountComponent } from '../edit-account/edit-account.component';
-import { Account } from 'src/app/shared/model';
+import { Account, AccountTypes } from 'src/app/shared/model';
 import * as AppReducers from '../../store/app.reducers';
 import { map, distinct } from 'rxjs/operators';
-import * as AccountReducers from '../../store/reducers/account.reducers';
+import { AccountState } from '../../store/reducers/account.reducers';
 import { Observable, Subject, Subscription } from 'rxjs';
 import * as AccountActions from '../../store/actions/account.actions';
+import { DictionaryState } from '../../store/reducers/dictionary.reducers';
 
 
 @Component({
@@ -18,6 +19,7 @@ import * as AccountActions from '../../store/actions/account.actions';
 export class AccountsListComponent implements OnInit, OnDestroy {
   accountsList$: Observable<Account[]>;
   searchSubscription: Subscription;
+  accountTypes$: Observable<AccountTypes[]>;
 
   filters$: Subject<any> = new Subject();
 
@@ -29,9 +31,12 @@ export class AccountsListComponent implements OnInit, OnDestroy {
     });
     
     this.accountsList$ = this.store.select('accounts').pipe(
-      map((data: AccountReducers.AccountState) => data.accounts),
+      map((data: AccountState) => data.accounts),
       distinct()
-    )
+    );
+    this.accountTypes$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.accountTypes)
+    );
   }
 
   ngOnDestroy() {

@@ -4,8 +4,11 @@ import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as AppReducers from '../../store/app.reducers';
 import * as TransactionReducers from '../../store/reducers/transaction.reducers';
-import { Transaction, TransactionType, TransactionCategory } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory, TransactionTypes, TransactionCategories, Currency } from 'src/app/shared/model';
 import * as TransactionActions from '../../store/actions/transaction.actions';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DictionaryState } from 'src/app/store/reducers/dictionary.reducers';
 
 @Component({
   selector: 'app-new-transactions',
@@ -14,37 +17,25 @@ import * as TransactionActions from '../../store/actions/transaction.actions';
 })
 export class NewTransactionsComponent implements OnInit {
   transactionForm: FormGroup;
-  currencies: string[] = [
-    'PLN',
-    'EUR'
-  ];
 
-  transactionTypes: string[] = [
-    'INTERNAL',
-    'OUTGOING',
-    'INCOMING'
-  ];
-
-  transactionCategories: string[] = [
-    'CLOTHES',
-    'FOOD',
-    'ENTERTAINMENT',
-    'EDUCATION',
-    'SPORT',
-    'DIY',
-    'HEALTH',
-    'IT',
-    'ELECTRONICS',
-    'APARTMENT',
-    'CHARGES'
-  ];
-
+  public currencies$: Observable<Currency[]>;
+  public transactionTypes$: Observable<TransactionTypes[]>;
+  public transactionCategories$: Observable<TransactionCategories[]>;
   public transactionType = TransactionType;
   public transactionCategory = TransactionCategory;
 
   constructor(private dialogRef: MatDialogRef<NewTransactionsComponent>, private store: Store<AppReducers.AppState>) { }
 
   ngOnInit() {
+    this.transactionCategories$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.transactionCategories)
+    );
+    this.transactionTypes$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.transactionTypes)
+    );
+    this.currencies$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.currencies)
+    );
     this.initForm();
   }
 

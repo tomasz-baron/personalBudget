@@ -3,13 +3,15 @@ export interface Account {
     name: string;
     number?: string;
     bankName?: string;
-    currency: string;
+    currency: Currency;
     interestRate?: number;
-    type: 'CURRENT' | 'SAVINGS' | 'CASH' | 'RETIREMENT';
+    type: AccountTypes;
     included: boolean;
     balance: number;
     initialBalance: number;
 }
+
+export type AccountTypes = 'CURRENT' | 'SAVINGS' | 'CASH' | 'RETIREMENT';
 
 export enum AccountType {
     CURRENT = 'account.type.current',
@@ -17,6 +19,8 @@ export enum AccountType {
     CASH = 'account.type.cash',
     RETIREMENT = 'account.type.retirement',
 }
+
+export type Currency = 'PLN' | 'EUR';
 
 export interface Card {
     id: string;
@@ -40,13 +44,16 @@ export interface Transaction {
     id: string;
     date: Date;
     description: string;
-    type: 'INTERNAL' | 'OUTGOING' | 'INCOMING';
+    type: TransactionTypes;
     fromAccountId?: string;
     toAccountId?: string;
     amount: number;
-    currency: string;
-    category: 'CLOTHES' | 'FOOD' | 'ENTERTAINMENT' | 'EDUCATION' | 'SPORT' | 'DIY' | 'HEALTH' | 'IT' | 'ELECTRONICS' | 'APARTMENT' | 'CHARGES' | 'SALARY' | 'REFUND' | 'FAMILY';
+    currency: Currency;
+    category: TransactionCategories;
 }
+
+export type TransactionTypes = 'INTERNAL' | 'OUTGOING' | 'INCOMING';
+export type TransactionCategories = 'CLOTHES' | 'FOOD' | 'ENTERTAINMENT' | 'EDUCATION' | 'SPORT' | 'DIY' | 'HEALTH' | 'IT' | 'ELECTRONICS' | 'APARTMENT' | 'CHARGES' | 'SALARY' | 'REFUND' | 'FAMILY';
 
 export enum TransactionType {
     INTERNAL = 'transaction.type.internal',
@@ -70,3 +77,4 @@ export enum TransactionCategory {
     REFUND = 'transaction.category.refund',
     FAMILY = 'transaction.category.family',
 }
+

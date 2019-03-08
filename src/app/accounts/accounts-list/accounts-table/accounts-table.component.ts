@@ -3,7 +3,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-import { Account, AccountType } from 'src/app/shared/model';
+import { Account, AccountType, AccountTypes } from 'src/app/shared/model';
 import { NgForm } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { AccountsService } from '../../services/accounts.service';
@@ -27,6 +27,9 @@ export class AccountsTableComponent implements OnInit {
   @Input()
   filters: BehaviorSubject<any>;
 
+  @Input()
+  accountTypes: AccountTypes[];
+
   @ViewChild(MatSort)
   sort: MatSort;
 
@@ -45,13 +48,6 @@ export class AccountsTableComponent implements OnInit {
   public accountType = AccountType;
   public textFilter: string = '';
   public summary: number;
-
-  public accountTypes: string[] = [
-    'CURRENT',
-    'SAVINGS',
-    'CASH',
-    'RETIREMENT'
-  ];
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();

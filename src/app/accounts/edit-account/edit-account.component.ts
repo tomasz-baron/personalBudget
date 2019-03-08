@@ -2,12 +2,14 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import * as AccountActions from '../../store/actions/account.actions';
 import * as AccountReducers from '../../store/reducers/account.reducers';
 import * as AppReducers from '../../store/app.reducers';
 import { Store } from '@ngrx/store';
-import { Account, AccountType } from 'src/app/shared/model';
+import { Account, AccountType, AccountTypes, Currency } from 'src/app/shared/model';
+import { map } from 'rxjs/operators';
+import { DictionaryState } from 'src/app/store/reducers/dictionary.reducers';
 
 @Component({
   selector: 'app-edit-account',
@@ -16,16 +18,8 @@ import { Account, AccountType } from 'src/app/shared/model';
 })
 export class EditAccountComponent implements OnInit, OnDestroy {
   accountForm: FormGroup;
-  currencies: string[] = [
-    'PLN',
-    'EUR'
-  ];
-  accountTypes: string[] = [
-    'CURRENT',
-    'SAVINGS',
-    'CASH',
-    'RETIREMENT'
-  ];
+  currencies$: Observable<Currency[]>;
+  accountTypes$: Observable<AccountTypes[]>;
 
   subscription: Subscription;
   id: string;
@@ -35,6 +29,12 @@ export class EditAccountComponent implements OnInit, OnDestroy {
   constructor(private dialogRef: MatDialogRef<EditAccountComponent>, private store: Store<AppReducers.AppState>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+    this.accountTypes$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.accountTypes)
+    );
+    this.currencies$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.currencies)
+    );
     if (this.data.editMode) {
       this.subscription = this.store.select('accounts').subscribe((accountState: AccountReducers.AccountState) => {
         this.id = accountState.selectedAccount.id;

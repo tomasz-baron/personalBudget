@@ -1,4 +1,4 @@
-<app-accounts-table [data]="accountsList$" [filters]="filters$" (selectAccount)="onSelectAccount($event)" (toggleAccount)="onToggleAccount($event)"></app-accounts-table>
+<app-accounts-table [data]="accountsList$" [filters]="filters$" [accountTypes]="(accountTypes$ | async)" (selectAccount)="onSelectAccount($event)" (toggleAccount)="onToggleAccount($event)"></app-accounts-table>
 
 <div class="btn-floating">
     <button mat-fab color="primary" (click)="openForm()" >
