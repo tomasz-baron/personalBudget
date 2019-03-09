@@ -6,7 +6,7 @@ import { Subscription, Observable } from 'rxjs';
 
 import * as AppReducers from '../../store/app.reducers';
 import * as TransactionReducers from '../../store/reducers/transaction.reducers';
-import { Transaction, TransactionType, TransactionCategory, TransactionCategories, TransactionTypes, Currency } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory, TransactionCategories, TransactionTypes, Currency, ShortAccount } from 'src/app/shared/model';
 import * as TransactionActions from '../../store/actions/transaction.actions';
 import { map } from 'rxjs/operators';
 import { DictionaryState } from 'src/app/store/reducers/dictionary.reducers';
@@ -19,6 +19,7 @@ import { DictionaryState } from 'src/app/store/reducers/dictionary.reducers';
 export class EditTransactionComponent implements OnInit, OnDestroy {
   transactionForm: FormGroup;
 
+  public accounts$: Observable<ShortAccount[]>;
   public currencies$: Observable<Currency[]>;
   public transactionTypes$: Observable<TransactionTypes[]>;
   public transactionCategories$: Observable<TransactionCategories[]>;
@@ -39,6 +40,9 @@ export class EditTransactionComponent implements OnInit, OnDestroy {
     );
     this.currencies$ = this.store.select('dictionaries').pipe(
       map((data: DictionaryState) => data.currencies)
+    );
+    this.accounts$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.accounts)
     );
     this.subscription = this.store.select('transactions').subscribe((transactionState: TransactionReducers.TransactionState) => {
       this.id = transactionState.selectedTransaction.id;

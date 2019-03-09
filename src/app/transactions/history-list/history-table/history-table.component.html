@@ -13,19 +13,15 @@
   </ng-container>
   <ng-container matColumnDef="from">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.list.from' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.fromAccountId}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.fromAccountId | accountName | async}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="to">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.list.to' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.toAccountId}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.toAccountId | accountName | async}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="amount">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.list.amount' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.amount | number: '.2'}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="currency">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.list.currency' | translate }}</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.currency}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.amount | number: '.2'}} {{element.currency}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="category">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.list.category' | translate }}</mat-header-cell>

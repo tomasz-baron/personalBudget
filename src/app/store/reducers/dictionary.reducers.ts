@@ -1,11 +1,12 @@
 import * as DictionaryActions from '../actions/dictionary.actions';
-import { AccountTypes, TransactionTypes, TransactionCategories, Currency } from 'src/app/shared/model';
+import { AccountTypes, TransactionTypes, TransactionCategories, Currency, ShortAccount } from 'src/app/shared/model';
 
 export interface DictionaryState {
     accountTypes: AccountTypes[];
     transactionTypes: TransactionTypes[];
     transactionCategories: TransactionCategories[];
     currencies: Currency[];
+    accounts: ShortAccount[];
 }
 
 const initialState: DictionaryState = {
@@ -36,6 +37,22 @@ const initialState: DictionaryState = {
     currencies: [
         'PLN',
         'EUR'
+    ],
+    accounts: [
+        {
+            id: '3',
+            name: 'nowqa',
+            type: 'ACCOUNT',
+            balance: 4059.01,
+            currency: 'EUR'
+        },
+        {
+            id: '4',
+            name: 'dfgfgh',
+            type: 'ACCOUNT',
+            balance: 4059.01,
+            currency: 'PLN'
+        }
     ]
 }
 

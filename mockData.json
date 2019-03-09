@@ -17,14 +17,14 @@
       "amount": 555,
       "currency": "PLN",
       "category": "CLOTHES",
-      "fromAccountId": null,
-      "toAccountId": null
+      "fromAccountId": "3",
+      "toAccountId": "4"
     },
     {
       "date": "2019-02-26T19:47:35.014Z",
       "description": "dfhgfh",
       "type": "OUTGOING",
-      "fromAccountId": null,
+      "fromAccountId": "3",
       "toAccountId": null,
       "amount": 756,
       "currency": "PLN",
@@ -60,15 +60,16 @@
       "disabled": false
     },
     {
+      "id": "4",
       "name": "dfgfgh",
       "number": "56475785645365445",
       "bankName": "gfhfj",
       "currency": "PLN",
       "interestRate": 3,
       "type": "SAVINGS",
+      "balance": 200,
       "initialBalance": 1,
       "included": false,
-      "id": "AeX_rkV",
       "disabled": false
     }
   ]

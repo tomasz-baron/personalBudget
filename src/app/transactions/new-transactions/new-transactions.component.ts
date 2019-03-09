@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as AppReducers from '../../store/app.reducers';
 import * as TransactionReducers from '../../store/reducers/transaction.reducers';
-import { Transaction, TransactionType, TransactionCategory, TransactionTypes, TransactionCategories, Currency } from 'src/app/shared/model';
+import { Transaction, TransactionType, TransactionCategory, TransactionTypes, TransactionCategories, Currency, ShortAccount } from 'src/app/shared/model';
 import * as TransactionActions from '../../store/actions/transaction.actions';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,6 +18,7 @@ import { DictionaryState } from 'src/app/store/reducers/dictionary.reducers';
 export class NewTransactionsComponent implements OnInit {
   transactionForm: FormGroup;
 
+  public accounts$: Observable<ShortAccount[]>;
   public currencies$: Observable<Currency[]>;
   public transactionTypes$: Observable<TransactionTypes[]>;
   public transactionCategories$: Observable<TransactionCategories[]>;
@@ -35,6 +36,9 @@ export class NewTransactionsComponent implements OnInit {
     );
     this.currencies$ = this.store.select('dictionaries').pipe(
       map((data: DictionaryState) => data.currencies)
+    );
+    this.accounts$ = this.store.select('dictionaries').pipe(
+      map((data: DictionaryState) => data.accounts)
     );
     this.initForm();
   }

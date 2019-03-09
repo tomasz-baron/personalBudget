@@ -19,7 +19,7 @@ export class HistoryTableComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
-  displayedColumns = ['date', 'description', 'type', 'from', 'to', 'amount', 'currency', 'category'];
+  displayedColumns = ['date', 'description', 'type', 'from', 'to', 'amount', 'category'];
   dataSource;
   transactionType = TransactionType;
   transactionCategory = TransactionCategory;

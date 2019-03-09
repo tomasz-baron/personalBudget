@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { ShortAccount } from 'src/app/shared/model';
 
 
 export const GET_ACCOUNTS = 'GET_ACCOUNTS';
@@ -14,7 +15,7 @@ export class GetAccounts implements Action {
 export class SetAccounts implements Action {
     readonly type = SET_ACCOUNTS;
 
-    constructor(public payload: Account[]) { }
+    constructor(public payload: ShortAccount[]) { }
 }
 
 

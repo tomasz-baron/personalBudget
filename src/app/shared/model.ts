@@ -2,13 +2,21 @@ export interface Account {
     id: string;
     name: string;
     number?: string;
-    bankName?: string;
-    currency: Currency;
+    bankName?: string; 
     interestRate?: number;
     type: AccountTypes;
     included: boolean;
     balance: number;
     initialBalance: number;
+    currency: Currency;
+}
+
+export interface ShortAccount {
+    id: string;
+    name: string;
+    type: 'ACCOUNT' | 'LOAN' | 'DEPOSIT';
+    balance: number;
+    currency: Currency;
 }
 
 export type AccountTypes = 'CURRENT' | 'SAVINGS' | 'CASH' | 'RETIREMENT';
