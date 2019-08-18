@@ -1,0 +1,5 @@
+<mat-form-field>
+  <mat-select [placeholder]="placeholder" formControlName="formControlName">
+    <mat-option *ngFor="let account of (accounts$ | async)" [value]="account.id">{{account.name}}</mat-option>
+  </mat-select>
+</mat-form-field>

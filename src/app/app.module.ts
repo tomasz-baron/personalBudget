@@ -32,6 +32,7 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AccountEffects } from './store/effects/account.effects';
 import { AccountNamePipe } from './shared/pipes/account-name.pipe';
+import { AccountSelectComponent } from './shared/controls/account-select/account-select.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditCreditCardComponent,
     EditTransactionComponent,
     AccountNamePipe,
+    AccountSelectComponent,
   ],
   imports: [
     BrowserModule,

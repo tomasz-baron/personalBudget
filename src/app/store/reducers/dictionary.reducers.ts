@@ -50,7 +50,14 @@ const initialState: DictionaryState = {
             id: '4',
             name: 'dfgfgh',
             type: 'ACCOUNT',
-            balance: 4059.01,
+            balance: 459.01,
+            currency: 'PLN'
+        },
+        {
+            id: '5',
+            name: 'tes',
+            type: 'DEPOSIT',
+            balance: 200,
             currency: 'PLN'
         }
     ]

@@ -14,16 +14,11 @@
         <mat-option *ngFor="let type of (transactionTypes$ | async)" [value]="type">{{transactionType[type] | translate}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <mat-select [placeholder]="'transaction.edit.from' | translate" formControlName="fromAccountId">
-        <mat-option *ngFor="let account of (accounts$ | async)" [value]="account.id">{{account.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select [placeholder]="'transaction.edit.to' | translate" formControlName="toAccountId">
-        <mat-option *ngFor="let account of (accounts$ | async)" [value]="account.id">{{account.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+   
+      <!-- <ng-content appAccountSelect [placeholder]="'transaction.edit.from' | translate" formControlName="fromAccountId"></ng-content> -->
+
+      <!-- <app-account-select [placeholder]="'transaction.edit.to' | translate" formControlName="toAccountId"></app-account-select> -->
+
     <mat-form-field>
       <input matInput type="number" [placeholder]="'transaction.edit.amount' | translate" formControlName="amount">
     </mat-form-field>
