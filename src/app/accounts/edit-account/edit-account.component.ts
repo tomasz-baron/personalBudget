@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription, Observable } from 'rxjs';
 import * as AccountActions from '../../store/actions/account.actions';
 import * as AccountReducers from '../../store/reducers/account.reducers';

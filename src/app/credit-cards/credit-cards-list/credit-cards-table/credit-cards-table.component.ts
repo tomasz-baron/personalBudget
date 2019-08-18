@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Card } from 'src/app/shared/model';
 
 @Component({
@@ -11,7 +12,7 @@ export class CreditCardsTableComponent implements OnInit {
   @Input()
   data: Card[];
 
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, {static: true})
   sort: MatSort;
 
   displayedColumns = ['number', 'funds', 'limit', 'cycle', 'repaymentAmount'];

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -30,10 +31,10 @@ export class AccountsTableComponent implements OnInit {
   @Input()
   accountTypes: AccountTypes[];
 
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, {static: true})
   sort: MatSort;
 
-  @ViewChild('searchForm')
+  @ViewChild('searchForm', {static: true})
   searchForm: NgForm;
 
   @Output()

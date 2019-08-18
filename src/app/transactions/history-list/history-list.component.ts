@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from 'src/app/shared/model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { NewTransactionsComponent } from '../new-transactions/new-transactions.component';
 import { EditTransactionComponent } from '../edit-transaction/edit-transaction.component';
 import * as AppReducers from '../../store/app.reducers';

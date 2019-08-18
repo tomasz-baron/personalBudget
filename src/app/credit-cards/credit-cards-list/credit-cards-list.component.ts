@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/shared/model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { EditCreditCardComponent } from '../edit-credit-card/edit-credit-card.component';
 
 @Component({

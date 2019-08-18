@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { EditAccountComponent } from '../edit-account/edit-account.component';
 import { Account, AccountTypes } from 'src/app/shared/model';
