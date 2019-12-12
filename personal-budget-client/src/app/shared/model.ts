@@ -61,7 +61,11 @@ export interface Transaction {
 }
 
 export type TransactionTypes = 'INTERNAL' | 'OUTGOING' | 'INCOMING';
-export type TransactionCategories = 'CLOTHES' | 'FOOD' | 'ENTERTAINMENT' | 'EDUCATION' | 'SPORT' | 'DIY' | 'HEALTH' | 'IT' | 'ELECTRONICS' | 'APARTMENT' | 'CHARGES' | 'SALARY' | 'REFUND' | 'FAMILY';
+export type TransactionCategories = 'CLOTHES' | 'FOOD' | 'JUNK_FOOD' | 'RESTAURANTS' | 'ALCOHOL' 
+| 'ENTERTAINMENT' | 'CULTURE' | 'EDUCATION' | 'SPORT' | 'DIY' | 'HEALTH' | 'BEAUTY' | 'IT' 
+| 'ELECTRONICS' | 'APARTMENT_CHARGES' | 'APARTMENT_EQUIPMENT' | 'BUILDING_MATERIALS' | 'INTERNET_PHONE' 
+| 'SALARY' | 'REFUND' | 'FAMILY' | 'TRAVELS' | 'GIFTS' 
+| 'INTERESTS' | 'TRANSFER' | 'SERVICES' | 'TRANSPORT' | 'BANK_FEES' | 'OTHER';
 
 export enum TransactionType {
     INTERNAL = 'transaction.type.internal',

@@ -30,9 +30,7 @@ const initialState: DictionaryState = {
         'DIY',
         'HEALTH',
         'IT',
-        'ELECTRONICS',
-        'APARTMENT',
-        'CHARGES'
+        'ELECTRONICS'
     ],
     currencies: [
         'PLN',
