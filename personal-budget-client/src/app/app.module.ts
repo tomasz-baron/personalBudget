@@ -109,11 +109,5 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    EditAccountComponent,
-    EditCreditCardComponent,
-    NewTransactionsComponent,
-    EditTransactionComponent
-  ]
 })
 export class AppModule { }
